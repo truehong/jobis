@@ -3,22 +3,25 @@ package com.test.jabis.domain.account;
 import lombok.*;
 import org.springframework.stereotype.Repository;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
 @Getter
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
+@ToString
 // todo : @EqualsAndHashCode
+@Table(name = "account")
 public class Account {
-    @Id
+    @Id @GeneratedValue
+    @Column(name = "user_no", nullable = false)
+    Long userNo;
+
     @Column(name = "user_id", nullable = false)
     String userId;
 
-    @Column(name = "password", nullable = false)
+    @Column(unique = true, name = "password", nullable = false)
     String password;
     String name;
     @Column(name = "reg_no")
