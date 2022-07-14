@@ -1,7 +1,7 @@
 package com.test.jabis.common.aop;
 
 import com.test.jabis.common.annotations.AuthCheck;
-import com.test.jabis.domain.token.TokenService;
+import com.test.jabis.auth.jwt.TokenService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.logging.log4j.util.Strings;

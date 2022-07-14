@@ -9,4 +9,6 @@ spring:
         database: h2
         generate-ddl: true
         hibernate:
-            ddl-auto: create
+            ddl-auto: create-drop
+apis:
+    scrap-api : https://codetest.3o3.co.kr/v1/scrap

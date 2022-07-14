@@ -1,5 +1,9 @@
 package com.test.jabis.domain.account;
 
+import com.test.jabis.auth.service.AuthService;
+import com.test.jabis.user.dao.UserRepository;
+import com.test.jabis.user.dto.SignupRequest;
+import com.test.jabis.user.service.UserService;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,13 +21,13 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @SpringBootTest
 @AutoConfigureMockMvc
 @Transactional
-class AccountServiceTest {
+class AuthServiceTest {
     @Autowired
     MockMvc mockMvc;
     @Autowired
-    AccountService accountService;
+    UserService userService;
     @Autowired
-    AccountRepository accountRepository;
+    UserRepository userRepository;
 
     @Test
     @DisplayName("회원 가입 처리")
@@ -46,7 +50,7 @@ class AccountServiceTest {
                 .regNo("00000000")
                 .userId("hhhhhongse@naver.com")
                 .build();
-        accountService.createAccount(signupRequest);
+        userService.createAccount(signupRequest);
         mockMvc.perform(MockMvcRequestBuilders.post("/szs/login")
                         .contentType(MediaType.APPLICATION_JSON)
                         .param("userId", "hhhhhongse@naver.com")

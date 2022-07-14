@@ -1,4 +1,4 @@
-package com.test.jabis.domain.account;
+package com.test.jabis.user.dto;
 
 import com.sun.istack.NotNull;
 import lombok.AllArgsConstructor;

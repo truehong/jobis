@@ -1,8 +1,6 @@
-package com.test.jabis.domain.token;
+package com.test.jabis.auth.jwt;
 
-import lombok.AllArgsConstructor;
 import lombok.Getter;
-import lombok.NoArgsConstructor;
 
 
 @Getter

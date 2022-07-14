@@ -1,4 +1,4 @@
-package com.test.jabis.domain.token;
+package com.test.jabis.auth.jwt;
 
 import io.jsonwebtoken.*;
 import lombok.extern.slf4j.Slf4j;

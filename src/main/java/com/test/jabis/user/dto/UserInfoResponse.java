@@ -1,4 +1,4 @@
-package com.test.jabis.domain.user;
+package com.test.jabis.user.dto;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;
