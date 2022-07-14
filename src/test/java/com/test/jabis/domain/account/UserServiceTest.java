@@ -1,5 +1,6 @@
 package com.test.jabis.domain.account;
 
+import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,7 +18,9 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @SpringBootTest
 @AutoConfigureMockMvc
 @Transactional
-class AccountServiceTest {
+@Slf4j
+public class UserServiceTest {
+
     @Autowired
     MockMvc mockMvc;
     @Autowired
@@ -26,35 +29,22 @@ class AccountServiceTest {
     AccountRepository accountRepository;
 
     @Test
-    @DisplayName("회원 가입 처리")
-    public void signupTest() throws Exception {
-        mockMvc.perform(MockMvcRequestBuilders.post("/szs/signup")
-                        .param("userId", "hhhhhongse@naver.com")
-                        .param("password", "password")
-                        .param("name", "홍길동"))
-                .andExpect(status().isOk())
-                .andExpect(unauthenticated());
-
-    }
-
-    @Test
-    @DisplayName("로그인 처리")
-    public void loginTest() throws Exception {
-        SignupRequest signupRequest = SignupRequest.builder()
+    @DisplayName("유저정보조회 테스트")
+    public void getUserInfoTest() throws Exception {
+        SignupRequest signupRequest =  SignupRequest.builder()
                 .name("홍길동")
                 .password("password")
-                .regNo("00000000")
+                .regNo("860824-1655068")
                 .userId("hhhhhongse@naver.com")
                 .build();
         accountService.createAccount(signupRequest);
-        mockMvc.perform(MockMvcRequestBuilders.post("/szs/login")
-                        .contentType(MediaType.APPLICATION_JSON)
-                        .param("userId", "hhhhhongse@naver.com")
-                        .param("password", "password"))
+        String token = "Bearer " + accountService.login("hhhhhongse@naver.com", "password");
+        System.out.println("created token = " + token);
+        mockMvc.perform(MockMvcRequestBuilders.get("/szs/me")
+                        .header("Authorization", token))
                 .andExpect(status().isOk())
                 // todo json path
                 .andDo(print())
                 .andExpect(unauthenticated());
     }
-
 }
