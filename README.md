@@ -5,9 +5,9 @@ http://localhost:8080/swagger-ui/index.html
 
 ## 현재 config 오류로 작동 안됨
 
-- /szs/signup
+- /szs/signup (spring securiy login) 
 - /szs/login (id, password 쿼리 스트링으로 동작)
-- /szs/scrap
+- /szs/scrap 
 - /szs/refund
 
 ## todo
