@@ -1,11 +1,11 @@
 # jabis
 
-swagger url 
+swagger url - 현재 config 오류로 작동 안됨
 http://localhost:8080/swagger-ui/index.html 
 
-## 현재 config 오류로 작동 안됨
 
-- /szs/signup (spring securiy login) 
+## 구현 API 목록 
+- /szs/signup (spring securiy filter 로 구현) 
 - /szs/login (id, password 쿼리 스트링으로 동작)
 - /szs/scrap 
 - /szs/refund
