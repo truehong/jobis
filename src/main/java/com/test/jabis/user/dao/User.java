@@ -1,9 +1,13 @@
 package com.test.jabis.user.dao;
 
 import com.test.jabis.user.dto.SignupRequest;
+import io.jsonwebtoken.Claims;
 import lombok.*;
 
-import javax.persistence.*;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
 
 @Entity
 @Getter
@@ -14,10 +18,7 @@ import javax.persistence.*;
 // todo : @EqualsAndHashCode
 @Table(name = "user_account")
 public class User {
-    @Id @GeneratedValue
-    @Column(name = "user_no", nullable = false)
-    Long userNo;
-
+    @Id
     @Column(name = "user_id", unique = true, nullable = false)
     String userId;
 
@@ -34,6 +35,15 @@ public class User {
                 .password(signupRequest.getPassword())
                 .name(signupRequest.getName())
                 .regNo(signupRequest.getRegNo())
+                .build();
+    }
+
+    public static User create(Claims claims) {
+        return User.builder()
+                .name(String.valueOf(claims.get("user_name")))
+                .name(String.valueOf(claims.get("user_id")))
+                .name(String.valueOf(claims.get("reg_no")))
+                .name(String.valueOf(claims.get("user_name")))
                 .build();
     }
 }

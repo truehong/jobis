@@ -6,5 +6,6 @@ import com.test.jabis.user.dto.UserInfoResponse;
 
 public interface UserService {
     User createAccount(SignupRequest signupRequest);
-    UserInfoResponse getUserInfo();
+
+    UserInfoResponse getUserInfo(String userId);
 }

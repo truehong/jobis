@@ -1,6 +1,5 @@
 package com.test.jabis.domain.account;
 
-import com.test.jabis.auth.service.AuthService;
 import com.test.jabis.user.dao.UserRepository;
 import com.test.jabis.user.dto.SignupRequest;
 import com.test.jabis.user.service.UserService;
@@ -53,9 +52,29 @@ class AuthServiceTest {
         userService.createAccount(signupRequest);
         mockMvc.perform(MockMvcRequestBuilders.post("/szs/login")
                         .contentType(MediaType.APPLICATION_JSON)
-                        .param("userId", "hhhhhongse@naver.com")
+                        .param("user_id", "hhhhhongse@naver.com")
                         .param("password", "password"))
                 .andExpect(status().isOk())
+                // todo json path
+                .andDo(print())
+                .andExpect(unauthenticated());
+    }
+
+    @Test
+    @DisplayName("로그인 처리-실패")
+    public void loginFailTest() throws Exception {
+        SignupRequest signupRequest = SignupRequest.builder()
+                .name("홍길동")
+                .password("password")
+                .regNo("00000000")
+                .userId("hhhhhongse@naver.com")
+                .build();
+        userService.createAccount(signupRequest);
+        mockMvc.perform(MockMvcRequestBuilders.post("/szs/login")
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .param("user_id", "hhhhhongse@naver.com")
+                        .param("password", "wrong"))
+                .andExpect(status().isUnauthorized())
                 // todo json path
                 .andDo(print())
                 .andExpect(unauthenticated());

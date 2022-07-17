@@ -7,7 +7,7 @@ import org.springframework.http.HttpStatus;
 public class CommonResponse<T> {
     private HttpStatus code = HttpStatus.OK;
 
-    private String message = "ok";
+    private String message;
     private T data;
 
     protected CommonResponse(T data, String message) {this.data = data;

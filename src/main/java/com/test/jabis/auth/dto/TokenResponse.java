@@ -1,4 +1,4 @@
-package com.test.jabis.auth.jwt;
+package com.test.jabis.auth.dto;
 
 import lombok.Getter;
 

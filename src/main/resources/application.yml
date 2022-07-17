@@ -1,4 +1,7 @@
 spring:
+    mvc:
+        pathmatch:
+            matching-strategy: ant_path_matcher
     datasource:
         hikari:
             jdbc-url: jdbc:h2:mem:test
@@ -12,3 +15,7 @@ spring:
             ddl-auto: create-drop
 apis:
     scrap-api : https://codetest.3o3.co.kr/v1/scrap
+server:
+    servlet:
+        encoding:
+            charset: UTF-8

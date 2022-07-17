@@ -1,18 +1,18 @@
-package com.test.jabis.tax.service;
+package com.test.jabis.tax.dto;
 
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
-import org.springframework.data.relational.core.sql.In;
+import lombok.ToString;
 
 @Getter
+@ToString
 @RequiredArgsConstructor
 public class Money {
     private final Integer money;
 
     @Override
     public String toString() {
-        return "Money{" +
-                "money='" + money + '\'' +
-                '}';
+        Integer tmpMoney = money / 1000;
+        return tmpMoney + " 천원";
     }
 }

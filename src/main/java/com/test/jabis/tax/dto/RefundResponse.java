@@ -1,4 +1,4 @@
-package com.test.jabis.tax.service;
+package com.test.jabis.tax.dto;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.AllArgsConstructor;
