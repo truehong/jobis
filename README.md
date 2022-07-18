@@ -1,4 +1,4 @@
-# jabis
+# jobis
 
 swagger url - 현재 config 오류로 작동 안됨
 http://localhost:8080/swagger-ui/index.html 
