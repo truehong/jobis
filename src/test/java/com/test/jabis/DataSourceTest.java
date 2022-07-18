@@ -13,7 +13,7 @@ import static org.junit.jupiter.api.Assertions.fail;
 public class DataSourceTest {
    @Test
    public void H2ConnectionTest() {
-      try(Connection con = DriverManager.getConnection("jdbc:h2:mem:jbs")){
+      try(Connection con = DriverManager.getConnection("jdbc:h2:mem:test")){
       } catch (Exception e){
          fail(e.getMessage());
       }
