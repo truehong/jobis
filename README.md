@@ -1,8 +1,5 @@
 # job-offer Project test 
-implementing some API's 
-
-swagger url - 현재 config 오류로 작동 안됨
-http://localhost:8080/swagger-ui/index.html 
+implementing some API's
 
 
 ## 구현 API 목록 
